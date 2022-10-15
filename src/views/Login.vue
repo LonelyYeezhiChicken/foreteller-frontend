@@ -1,19 +1,60 @@
 <script  lang="ts">
+import { apiTest, apiLogin } from "../api/Api";
 import FooterAdmin from "../components/Footers/FootersAdmin.vue";
 import NavbarAdmin from "../components/Navbars/NavbarAdmin.vue";
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   name: "login",
+  inheritAttrs: false,
+  data() {
+    return {
+      userName: "" as string,
+      password: "" as string,
+    };
+  },
   components: {
     FooterAdmin,
     NavbarAdmin,
   },
-};
+  mounted() {
+    apiTest("").then((res: any) => {
+      console.log(res);
+    });
+  },
+  methods: {
+    // 檢查資料
+    checkData: function (): Boolean {
+      const _self = this;
+      if (_self.userName === "") return false;
+      if (_self.password === "") return false;
+
+      return true;
+    },
+    // 登入
+    toLogin: function (): void {
+      const _self = this;
+      if (_self.checkData()) {
+        apiLogin(_self.apiData()).then((res) => {
+          console.log(res.data.token);
+        });
+      }
+    },
+    // 組合Api資料
+    apiData: function (): any {
+      const _self = this;
+      return {
+        userName: _self.userName,
+        password: _self.password,
+      };
+    },
+  },
+});
 </script>
 
 <template>
   <navbar-admin />
   <div class="container mx-auto px-4 h-full">
-    <div class="flex content-center items-center justify-center h-full">
+    <section class="flex content-center items-center justify-center h-full">
       <div class="w-full lg:w-4/12 px-4">
         <div
           class="
@@ -46,7 +87,7 @@ export default {
                   "
                   htmlFor="grid-password"
                 >
-                  Email
+                  使用者
                 </label>
                 <input
                   type="email"
@@ -66,7 +107,8 @@ export default {
                     transition-all
                     duration-150
                   "
-                  placeholder="Email"
+                  placeholder="User Name"
+                  v-model="userName"
                 />
               </div>
 
@@ -81,7 +123,7 @@ export default {
                   "
                   htmlFor="grid-password"
                 >
-                  Password
+                  密碼
                 </label>
                 <input
                   type="password"
@@ -102,6 +144,8 @@ export default {
                     duration-150
                   "
                   placeholder="Password"
+                  autocomplete="on"
+                  v-model="password"
                 />
               </div>
               <div class="text-center mt-6">
@@ -128,6 +172,7 @@ export default {
                     duration-150
                   "
                   type="button"
+                  @click="toLogin()"
                 >
                   Sign In
                 </button>
@@ -142,13 +187,13 @@ export default {
             </a>
           </div>
           <div class="w-1/2 text-right">
-            <router-link to="/auth/register" class="text-blueGray-700">
+            <a href="javascript:void(0)" class="text-blueGray-700">
               <small>Create new account</small>
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
-    </div>
+    </section>
     <footer-admin />
   </div>
 </template>

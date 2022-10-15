@@ -1,18 +1,18 @@
 import jsSHA from 'jssha'
-import { CONFIG } from '../constants/config'
+//import { CONFIG } from '../constants/config'
 
-const { appId, appKey } = CONFIG
+//const { appId, appKey } = CONFIG
 
 export function getAuthorizationHeader() {
     const GMTString = new Date().toUTCString()
     const shaObj = new jsSHA('SHA-1', 'TEXT')
-    shaObj.setHMACKey(appKey, 'TEXT')
+    shaObj.setHMACKey("appKey", 'TEXT')
     shaObj.update('x-date: ' + GMTString)
     const HMAC = shaObj.getHMAC('B64')
-    const Authorization = `hmac username="${appId}", algorithm="hmac-sha1", headers="x-date", signature="${HMAC}"`
+    const Authorization = `hmac  algorithm="hmac-sha1", headers="x-date", signature="${HMAC}"`
 
     return {
-        // 'Accept-Encoding': 'gzip',
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         'X-Date': GMTString,
         Authorization,
