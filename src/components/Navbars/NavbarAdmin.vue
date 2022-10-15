@@ -49,7 +49,8 @@ export default {
           lg:static lg:block lg:justify-start
         "
       >
-        <a
+        <router-link
+          to="/home"
           class="
             text-lg
             font-bold
@@ -61,10 +62,9 @@ export default {
             uppercase
             text-gray-200
           "
-          href="#pablo"
         >
           預言家
-        </a>
+        </router-link>
         <button
           class="
             cursor-pointer
