@@ -1,1 +1,0 @@
-import{_ as e,o,c as t}from"./index.ee020c56.js";const c={},n={class:"text-3xl font-bold underline"};function r(s,l){return o(),t("h1",n,"Hello world!")}const a=e(c,[["render",r]]);export{a as default};
