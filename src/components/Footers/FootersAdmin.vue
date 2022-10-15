@@ -9,9 +9,11 @@ export default {
 </script>
 
 <template>
-  <footer class="block py-4 mt-10">
+  <footer class="block py-4 sticky bottom-0">
     <div class="container mx-auto px-4">
-      <hr class="mb-4 border-b-1 border-blueGray-200" />
+      <hr
+        class="mb-4 border-b-1 dark:border-blueGray-200 border-blueGray-500"
+      />
       <div
         class="flex flex-wrap items-center md:justify-between justify-center"
       >
