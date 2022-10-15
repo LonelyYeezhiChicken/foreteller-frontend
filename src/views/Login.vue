@@ -1,14 +1,17 @@
 <script  lang="ts">
 import FooterAdmin from "../components/Footers/FootersAdmin.vue";
+import NavbarAdmin from "../components/Navbars/NavbarAdmin.vue";
 export default {
   name: "login",
   components: {
     FooterAdmin,
+    NavbarAdmin,
   },
 };
 </script>
 
 <template>
+  <navbar-admin />
   <div class="container mx-auto px-4 h-full">
     <div class="flex content-center items-center justify-center h-full">
       <div class="w-full lg:w-4/12 px-4">
@@ -104,9 +107,9 @@ export default {
               <div class="text-center mt-6">
                 <button
                   class="
-                    bg-blueGray-800
+                    bg-pink-500
                     text-white
-                    active:bg-blueGray-600
+                    active:bg-pink-600
                     text-sm
                     font-bold
                     uppercase

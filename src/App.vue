@@ -22,8 +22,7 @@ export default {
 };
 </script>
 <template>
-  <main className="dark:bg-blueGray-700 font-mono bg-amber-100 h-screen">
-    <input type="button" value="變色" @click="changDark()" />
+  <main className="dark:bg-blueGray-700 font-mono border-blueGray-100 h-screen">
     <router-view class="relative w-full h-full py-40 min-h-screen" />
   </main>
 </template>

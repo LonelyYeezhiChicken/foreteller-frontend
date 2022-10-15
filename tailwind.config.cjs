@@ -2,15 +2,8 @@
 const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
 module.exports = {
-  mode: "jit",
   darkMode: "class",
-  purge: {
-    enabled: true,
-    content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-    options: {
-      safelist: [],
-    },
-  },
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     colors: {
       ...colors,
@@ -135,11 +128,3 @@ module.exports = {
     }),
   ],
 };
-// module.exports = {
-//   mode: "jit",
-//   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-//   theme: {
-//     extend: {},
-//   },
-//   plugins: [],
-// };
