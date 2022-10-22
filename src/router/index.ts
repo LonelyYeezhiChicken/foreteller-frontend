@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { RouterMap } from "../models/define"
 
 const routes = [
     {
-        path: "/Home",
-        name: "Home",
+        path: RouterMap.Home,
+        name: RouterMap.Home.toString(),
         component: () => import("../views/Home.vue")
     },
     {
-        path: "/",
-        name: "Login",
+        path: RouterMap.Login,
+        name: RouterMap.Login.toString(),
         component: () => import("../views/Login.vue")
     }
 ];
@@ -18,4 +19,14 @@ const router = createRouter({
     routes,
 })
 
+let test = false;
+
+router.beforeEach(async (to, from, next) => {
+    if (test) {
+        next();
+    } else {
+        next();
+    }
+    console.log(to.name)
+})
 export default router
