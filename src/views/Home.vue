@@ -2,6 +2,9 @@
 export default {
   name: "home",
   components: {},
+  created() {
+    console.log("home");
+  },
 };
 </script>
 
