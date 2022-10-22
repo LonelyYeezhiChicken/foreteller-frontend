@@ -3,6 +3,8 @@ import { apiTest, apiLogin } from "../api/Api";
 import FooterAdmin from "../components/Footers/FootersAdmin.vue";
 import NavbarAdmin from "../components/Navbars/NavbarAdmin.vue";
 import { defineComponent } from "vue";
+import { account } from "../store";
+import { RouterMap } from "../models/define";
 export default defineComponent({
   name: "login",
   inheritAttrs: false,
@@ -35,7 +37,8 @@ export default defineComponent({
       const _self = this;
       if (_self.checkData()) {
         apiLogin(_self.apiData()).then((res) => {
-          console.log(res.data.token);
+          account().setJwt(res.data.token);
+          this.$router.push(RouterMap.Home);
         });
       }
     },

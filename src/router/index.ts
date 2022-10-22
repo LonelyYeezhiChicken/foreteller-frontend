@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { RouterMap } from "../models/define"
+import { RouterMap } from "../models/define";
+import { account } from "../store"
+
 
 const routes = [
     {
@@ -22,7 +24,7 @@ const router = createRouter({
 let test = false;
 
 router.beforeEach(async (to, from, next) => {
-    if (test) {
+    if (account().isAuth) {
         next();
     } else {
         next();
