@@ -1,19 +1,20 @@
 import { defineStore } from 'pinia'
+import { Dao, CookieDao } from "../utils"
 
-
+const tokenStr = "token";
 export const account = defineStore('account', {
     state: () => {
         return {
             auth: false,
+            Dao: new CookieDao()
         }
     },
     getters: {
         // 檢查權限
         isAuth: (state) => {
-            let status = sessionStorage.getItem("set");
-            if (status !== null) {
-                let jsonObj = JSON.parse(status);
-                state.auth = jsonObj.auth as boolean;
+            let token = state.Dao.read<string>(tokenStr);
+            if (token !== null || token !== "") {
+                state.auth = true;
                 return state.auth;
             } else {
                 state.auth = false;
@@ -22,10 +23,14 @@ export const account = defineStore('account', {
         }
     },
     actions: {
-        // 將jwt存入token
+        // 將jwt存入session
         setJwt(jwt: string) {
-            console.log(jwt);
-            sessionStorage.setItem('set', JSON.stringify({ auth: jwt }));
+            this.$state.Dao.create(tokenStr, jwt);
+            this.$state.auth = true;
+        },
+        // 清除jwt
+        clearJwt() {
+            this.$state.Dao.delete(tokenStr);
             this.$state.auth = true;
         }
     }

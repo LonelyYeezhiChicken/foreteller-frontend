@@ -1,14 +1,10 @@
 <script  lang="ts">
 const rootEl = document.getElementById("app");
 export default {
-  name: "thisApp",
-  data() {
-    return {};
-  },
+  name: "NavbarAdmin",
   methods: {
     changDark: function (): void {
       const _self = this;
-      console.log(rootEl);
       if (rootEl !== null) {
         if (rootEl.className.includes("dark")) {
           rootEl.classList.remove("dark");
