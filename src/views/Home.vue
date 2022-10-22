@@ -1,7 +1,12 @@
 <script  lang="ts">
+import Footer from "../components/Footers/FootersAdmin.vue";
+import Navbar from "../components/Navbars/Navbar.vue";
 export default {
   name: "home",
-  components: {},
+  components: {
+    Footer,
+    Navbar,
+  },
   created() {
     console.log("home");
   },
@@ -9,6 +14,8 @@ export default {
 </script>
 
 <template>
-  <layout />
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <navbar />
+  <div class="container mx-auto px-4 h-full">
+    <footer-admin />
+  </div>
 </template>
