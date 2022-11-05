@@ -1,8 +1,13 @@
 
 <script  lang="ts">
+import { Navbar, FooterAdmin } from "./components/index";
 const rootEl = document.getElementById("app");
 export default {
   name: "thisApp",
+  components: {
+    Navbar,
+    FooterAdmin,
+  },
   data() {
     return {};
   },
@@ -22,7 +27,9 @@ export default {
 };
 </script>
 <template>
+  <navbar />
   <main className="dark:bg-blueGray-700 font-mono border-blueGray-100 h-screen">
-    <router-view class="relative w-full h-full py-40 min-h-screen" />
+    <router-view class="relative w-full h-full min-h-screen" />
   </main>
+  <footer-admin />
 </template>

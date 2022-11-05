@@ -24,10 +24,11 @@ const router = createRouter({
 let test = false;
 
 router.beforeEach(async (to, from, next) => {
-    if (account().isAuth) {
+    console.log(account().isAuth)
+    if (account().isAuth || to.name === RouterMap.Login.toString()) {
         next();
     } else {
-        next();
+        next({ name: RouterMap.Login.toString() })
     }
     console.log(to.name)
 })

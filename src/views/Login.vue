@@ -54,7 +54,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <navbar-admin />
   <div class="container mx-auto px-4 h-full">
     <section class="flex content-center items-center justify-center h-full">
       <div class="w-full lg:w-4/12 px-4">
@@ -196,7 +195,6 @@ export default defineComponent({
         </div>
       </div>
     </section>
-    <footer-admin />
   </div>
 </template>
 
