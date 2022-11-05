@@ -1,7 +1,6 @@
 <script  lang="ts">
 import { apiTest, apiLogin } from "../api/Api";
-import FooterAdmin from "../components/Footers/FootersAdmin.vue";
-import NavbarAdmin from "../components/Navbars/NavbarAdmin.vue";
+import { FooterAdmin, NavbarAdmin } from "../components/index";
 import { defineComponent } from "vue";
 import { account } from "../store";
 import { RouterMap } from "../models/define";
