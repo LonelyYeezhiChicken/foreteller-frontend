@@ -1,7 +1,6 @@
 <script  lang="ts">
 import { apiTest, apiLogin } from "../api/Api";
-import FooterAdmin from "../components/Footers/FootersAdmin.vue";
-import NavbarAdmin from "../components/Navbars/NavbarAdmin.vue";
+import { FooterAdmin, NavbarAdmin } from "../components/index";
 import { defineComponent } from "vue";
 import { account } from "../store";
 import { RouterMap } from "../models/define";
@@ -55,7 +54,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <navbar-admin />
   <div class="container mx-auto px-4 h-full">
     <section class="flex content-center items-center justify-center h-full">
       <div class="w-full lg:w-4/12 px-4">
@@ -197,7 +195,6 @@ export default defineComponent({
         </div>
       </div>
     </section>
-    <footer-admin />
   </div>
 </template>
 

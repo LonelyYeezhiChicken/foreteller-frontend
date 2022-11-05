@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { Dao, CookieDao } from "../utils"
+import { CookieDao } from "../utils"
 
 const tokenStr = "token";
 export const account = defineStore('account', {
@@ -13,7 +13,7 @@ export const account = defineStore('account', {
         // 檢查權限
         isAuth: (state) => {
             let token = state.Dao.read<string>(tokenStr);
-            if (token !== null || token !== "") {
+            if (token !== null && token !== "") {
                 state.auth = true;
                 return state.auth;
             } else {
@@ -31,7 +31,7 @@ export const account = defineStore('account', {
         // 清除jwt
         clearJwt() {
             this.$state.Dao.delete(tokenStr);
-            this.$state.auth = true;
+            this.$state.auth = false;
         }
     }
 })
