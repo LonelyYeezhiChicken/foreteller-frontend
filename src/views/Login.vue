@@ -1,9 +1,10 @@
 <script  lang="ts">
-import { apiTest, apiLogin } from "../api/Api";
+import { apiTest, apiLogin, apiClaims } from "../api/Api";
 import { FooterAdmin, NavbarAdmin } from "../components/index";
 import { defineComponent } from "vue";
 import { account } from "../store";
 import { RouterMap } from "../models/define";
+import { AdminModel } from "../models/admin";
 export default defineComponent({
   name: "login",
   inheritAttrs: false,
@@ -36,8 +37,15 @@ export default defineComponent({
       const _self = this;
       if (_self.checkData()) {
         apiLogin(_self.apiData()).then((res) => {
-          account().setJwt(res.data.token);
-          this.$router.push(RouterMap.Home);
+          account().setJwt(res.data.token.result);
+          apiClaims().then((end) => {
+            let adData: AdminModel = {
+              userName: end.data[0].value,
+              role: end.data[2].value,
+            };
+            account().setAdmin(adData);
+            this.$router.push(RouterMap.Home);
+          });
         });
       }
     },

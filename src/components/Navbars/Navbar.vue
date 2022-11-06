@@ -22,9 +22,14 @@ export default {
     },
     //登出
     logout: function (): void {
-      account().clearJwt();
+      account().logOut();
       /* @ts-ignore */
       this.$router.push(RouterMap.Login);
+    },
+  },
+  computed: {
+    isAuth: function () {
+      return account().isAuth;
     },
   },
 };
@@ -143,7 +148,7 @@ export default {
               </svg>
             </button>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="isAuth">
             <button
               class="
                 px-3
