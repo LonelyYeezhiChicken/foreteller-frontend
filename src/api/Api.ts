@@ -10,3 +10,8 @@ export const apiTest = (data: any) => {
 export const apiLogin = (data: any) => {
     return req.post(`/Account`, data, undefined)
 }
+
+// 取得角色資訊
+export const apiClaims = () => {
+    return req.get(`/claims`, null, undefined)
+}

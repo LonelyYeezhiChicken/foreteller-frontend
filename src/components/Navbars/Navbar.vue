@@ -1,13 +1,9 @@
 <script  lang="ts">
 import { account } from "../../store";
 import { RouterMap } from "../../models/define";
-import { SideBar } from "../Sidebar/index";
 const rootEl = document.getElementById("app");
 export default {
   name: "Navbar",
-  components: {
-    SideBar,
-  },
   methods: {
     // 切換背景
     changDark: function (): void {
@@ -22,9 +18,14 @@ export default {
     },
     //登出
     logout: function (): void {
-      account().clearJwt();
+      account().logOut();
       /* @ts-ignore */
       this.$router.push(RouterMap.Login);
+    },
+  },
+  computed: {
+    isAuth: function () {
+      return account().isAuth;
     },
   },
 };
@@ -143,7 +144,7 @@ export default {
               </svg>
             </button>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="isAuth">
             <button
               class="
                 px-3
