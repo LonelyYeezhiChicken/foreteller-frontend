@@ -8,7 +8,7 @@ export const apiTest = (data: any) => {
 /** 權限相關*/
 // 登入
 export const apiLogin = (data: any) => {
-    return req.post(`/Account`, data, undefined)
+    return req.post(`/Account`, { ...data }, undefined)
 }
 
 // 取得角色資訊
