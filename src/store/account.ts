@@ -15,7 +15,7 @@ export const account = defineStore('account', {
     getters: {
         // 檢查權限
         isAuth: (state) => {
-            let token = state.Dao.read<string>(adminStr);
+            let token = state.Dao.read<string>(tokenStr);
             if (token !== null && token !== "") {
                 state.auth = true;
                 return state.auth;
@@ -38,6 +38,7 @@ export const account = defineStore('account', {
     actions: {
         // 將jwt存入session
         setJwt(jwt: string) {
+            this.$state.auth = true;
             this.$state.Dao.create(tokenStr, jwt);
         },
         // 清除jwt
@@ -49,7 +50,6 @@ export const account = defineStore('account', {
         // 存入角色資訊
         setAdmin(admin: AdminModel) {
             this.$state.Dao.create(adminStr, admin);
-            this.$state.auth = true;
         }
     }
 })

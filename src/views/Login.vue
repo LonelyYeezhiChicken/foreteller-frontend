@@ -1,10 +1,9 @@
 <script  lang="ts">
-import { apiTest, apiLogin, apiClaims } from "../api/Api";
+import { apiTest, apiLogin } from "../api/Api";
 import { FooterAdmin, NavbarAdmin } from "../components/index";
 import { defineComponent } from "vue";
 import { account } from "../store";
 import { RouterMap } from "../models/define";
-import { AdminModel } from "../models/admin";
 export default defineComponent({
   name: "login",
   inheritAttrs: false,
@@ -38,14 +37,8 @@ export default defineComponent({
       if (_self.checkData()) {
         apiLogin(_self.apiData()).then((res) => {
           account().setJwt(res.data.token.result);
-          apiClaims().then((end) => {
-            let adData: AdminModel = {
-              userName: end.data[0].value,
-              role: end.data[2].value,
-            };
-            account().setAdmin(adData);
-            this.$router.push(RouterMap.Home);
-          });
+          window.location.href = RouterMap.Home;
+          // this.$router.push(RouterMap.Home);
         });
       }
     },
@@ -84,7 +77,7 @@ export default defineComponent({
             <div class="text-blueGray-400 text-center mb-3 font-bold text-lg">
               <small>歡迎回來 預言家~</small>
             </div>
-            <form>
+            <form @submit.prevent="toLogin">
               <div class="relative w-full mb-3">
                 <label
                   class="
@@ -99,7 +92,7 @@ export default defineComponent({
                   使用者
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   class="
                     border-0
                     px-3
@@ -180,8 +173,6 @@ export default defineComponent({
                     transition-all
                     duration-150
                   "
-                  type="button"
-                  @click="toLogin()"
                 >
                   Sign In
                 </button>
