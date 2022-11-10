@@ -11,7 +11,7 @@ export default {
   name: "home",
   created() {
     console.log("Car Kind");
-    apiCarKindGet(null).then((res) => {
+    apiCarKindGet().then((res) => {
       console.log(res);
     });
   },
