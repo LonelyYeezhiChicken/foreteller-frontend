@@ -3,5 +3,6 @@
  */
 export type AdminModel = {
     userName: string,
-    role: string
+    role: string,
+    uu: string
 }

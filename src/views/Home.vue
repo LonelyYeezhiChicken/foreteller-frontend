@@ -9,7 +9,8 @@ export default {
     apiClaims().then((end) => {
       let adData: AdminModel = {
         userName: end.data[0].value,
-        role: end.data[2].value,
+        role: end.data[3].value,
+        uu: end.data[1].value,
       };
       account().setAdmin(adData);
     });
@@ -18,5 +19,7 @@ export default {
 </script>
 
 <template>
-  <div class="container mx-auto px-4 h-full"></div>
+  <div class="container mx-auto px-4 h-full">
+    <h1>Home</h1>
+  </div>
 </template>
