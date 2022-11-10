@@ -13,6 +13,11 @@ const routes = [
         path: RouterMap.Login,
         name: RouterMap.Login.toString(),
         component: () => import("../views/Login.vue")
+    },
+    {
+        path: RouterMap.CarKind,
+        name: RouterMap.CarKind.toString(),
+        component: () => import("../views/CarKind.vue")
     }
 ];
 

@@ -38,7 +38,6 @@ export default defineComponent({
         apiLogin(_self.apiData()).then((res) => {
           account().setJwt(res.data.token.result);
           window.location.href = RouterMap.Home;
-          // this.$router.push(RouterMap.Home);
         });
       }
     },
